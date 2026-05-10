@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meeting-summarizer"
+version = "0.1.0"
+description = "Transcribe and summarize meetings from audio using Whisper and Claude"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "sounddevice",
+    "soundfile",
+    "openai-whisper",
+    "anthropic",
+    "tiktoken",
+    "typer",
+    "python-dotenv",
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx",
+]
+
+[project.scripts]
+meeting-summarizer = "meeting_summarizer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["meeting_summarizer*"]

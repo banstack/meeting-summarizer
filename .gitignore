@@ -3,3 +3,10 @@ venv/
 __pycache__/
 *.pyc
 *.wav
+*.txt
+summary.md
+
+# build artifacts
+*.egg-info/
+dist/
+build/
