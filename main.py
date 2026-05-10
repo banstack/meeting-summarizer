@@ -5,6 +5,7 @@ from audio import preprocess
 
 # Custom hooks
 from recorder import record
+from transcriber import chunk_transcript, save_transcript, transcribe
 
 load_dotenv()
 app = typer.Typer()
@@ -25,13 +26,18 @@ def run(
     audio_path = record() if do_record else file
 
     # Stage 3: Pre-process
-    clean_path = preprocess(file)
+    typer.echo(f"=== Pre-processing Stage ===\n")
+    clean_path = preprocess(audio_path)
 
     # Stage 4: transcribe
+    typer.echo(f"\n=== Transcribing Phase ===\n")
+    transcript = transcribe(clean_path)
+    save_transcript(transcript, clean_path)
+    chunks = chunk_transcript(transcript)
 
     # Stage 5: summarize + export
-    typer.echo(f"Audio ready at : {audio_path}")
-    typer.echo(f"Clean audio ready at : {clean_path}")
+
+    typer.echo(f"\nReady to summarize - {len(chunks)} chunk(s)")
 
 
 if __name__ == "__main__":
