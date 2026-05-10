@@ -2,9 +2,8 @@ import typer
 from dotenv import load_dotenv
 
 from audio import preprocess
-
-# Custom hooks
 from recorder import record
+from summarizer import summarize_and_export
 from transcriber import chunk_transcript, save_transcript, transcribe
 
 load_dotenv()
@@ -36,8 +35,8 @@ def run(
     chunks = chunk_transcript(transcript)
 
     # Stage 5: summarize + export
-
-    typer.echo(f"\nReady to summarize - {len(chunks)} chunk(s)")
+    typer.echo("\n+=== Summarizing === \n")
+    summarize_and_export(chunks, output)
 
 
 if __name__ == "__main__":
