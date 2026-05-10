@@ -1,11 +1,12 @@
 import typer
 from dotenv import load_dotenv
 
+from audio import preprocess
+
 # Custom hooks
 from recorder import record
 
 load_dotenv()
-
 app = typer.Typer()
 
 
@@ -22,14 +23,15 @@ def run(
 
     # Stage 2: Record or load
     audio_path = record() if do_record else file
+
     # Stage 3: Pre-process
-    # clean_path = audio.preprocess(audio_path)
+    clean_path = preprocess(file)
 
     # Stage 4: transcribe
 
     # Stage 5: summarize + export
-
     typer.echo(f"Audio ready at : {audio_path}")
+    typer.echo(f"Clean audio ready at : {clean_path}")
 
 
 if __name__ == "__main__":
