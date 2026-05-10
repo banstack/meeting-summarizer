@@ -5,6 +5,7 @@ __pycache__/
 *.wav
 *.txt
 summary.md
+.DS_STORE
 
 # build artifacts
 *.egg-info/
