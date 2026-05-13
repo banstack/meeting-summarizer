@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "meeting-summarizer"
+name = "audiocore.ai"
 version = "0.1.0"
-description = "Transcribe and summarize meetings from audio using Whisper and Claude"
+description = "Transcribe and summarize audio using Whisper and Claude"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
